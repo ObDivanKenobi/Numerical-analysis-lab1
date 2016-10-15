@@ -16,40 +16,39 @@ namespace Lab1
         public Form1()
         {
             InitializeComponent();
+            chart.Series.Clear();
+        }
+
+        internal void OnIdle(object sender, EventArgs e)
+        {
+            buttonColor.Enabled = chart.Series.Count > 0;
         }
 
         private void buttonBuild_Click(object sender, EventArgs e)
         {
-            int min = int.Parse(textBoxMinX.Text),
-                max = int.Parse(textBoxMaxX.Text),
-                a, b, c, d;
-            if (textBoxA.Text == "") a = 0;
-            else a = int.Parse(textBoxA.Text);
-            if (textBoxB.Text == "") b = 0;
-            else b = int.Parse(textBoxB.Text);
-            if (textBoxC.Text == "") c = 0;
-            else c = int.Parse(textBoxC.Text);
-            if (textBoxD.Text == "") d = 0;
-            else d = int.Parse(textBoxD.Text);
+            //ChartArea area = chart.ChartAreas[0];
+            //chart.Series.Clear();
+            //chart.Series.Add(s);
+            //area.AxisX.Minimum = chart.ChartAreas[0].AxisX2.Minimum = min;
+            //area.AxisX.Maximum = chart.ChartAreas[0].AxisX2.Maximum = max;
+            //area.AxisY.Minimum = area.AxisY2.Minimum = source.Min(point => point.Y);
+            //area.AxisY.Maximum = area.AxisY2.Maximum = source.Max(point => point.Y);
 
-            Series s = new Series("Default");
-            s.ChartType = SeriesChartType.Spline;
-            List<PointF> source = new List<PointF>();
-            for (int i = min; i <= max; ++i)
-            {
-                float y = (float)(a * Math.Pow(i, 3) + b * Math.Pow(i, 2) + c * i + d);
-                source.Add(new PointF(i, y));
-            }
-
-            chart.Series.Clear();
-            chart.Series.Add(s);
-            chart.ChartAreas[0].AxisX.Minimum = chart.ChartAreas[0].AxisX2.Minimum = min;
-            chart.ChartAreas[0].AxisX.Maximum = chart.ChartAreas[0].AxisX2.Maximum = max;
-
-            chart.DataSource = source;
+            //chart.DataSource = source;
             chart.Series[0].XValueMember = "X";
             chart.Series[0].YValueMembers = "Y";
             Invalidate();
+        }
+
+        private void buttonColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialogGrapicColor.ShowDialog() == DialogResult.OK && chart.Series.Count > 0)
+                chart.Series[0].Color = colorDialogGrapicColor.Color;
+        }
+
+        private void buttonErase_Click(object sender, EventArgs e)
+        {
+            chart.Series.Clear();
         }
     }
 }

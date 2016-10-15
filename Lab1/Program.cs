@@ -16,6 +16,8 @@ namespace Lab1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Form1 form = new Form1();
+            Application.Idle += form.OnIdle;
             Application.Run(new Form1());
         }
     }
