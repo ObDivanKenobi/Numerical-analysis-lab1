@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridViewSpline = new System.Windows.Forms.DataGridView();
             this.ColumnX = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +41,8 @@
             this.buttonColor = new System.Windows.Forms.Button();
             this.colorDialogGrapicColor = new System.Windows.Forms.ColorDialog();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxDelta = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpline)).BeginInit();
             this.SuspendLayout();
@@ -50,21 +52,21 @@
             this.chart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.AxisX.IsStartedFromZero = false;
-            chartArea2.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea2.AxisY.IsStartedFromZero = false;
-            chartArea2.Name = "1quarter";
-            this.chart.ChartAreas.Add(chartArea2);
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chart.Legends.Add(legend2);
+            chartArea3.AxisX.IsStartedFromZero = false;
+            chartArea3.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea3.AxisY.IsStartedFromZero = false;
+            chartArea3.Name = "1quarter";
+            this.chart.ChartAreas.Add(chartArea3);
+            legend3.Enabled = false;
+            legend3.Name = "Legend1";
+            this.chart.Legends.Add(legend3);
             this.chart.Location = new System.Drawing.Point(262, 25);
             this.chart.Name = "chart";
-            series2.ChartArea = "1quarter";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Сплайн1";
-            this.chart.Series.Add(series2);
+            series3.ChartArea = "1quarter";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.Name = "Сплайн1";
+            this.chart.Series.Add(series3);
             this.chart.Size = new System.Drawing.Size(610, 565);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
@@ -98,16 +100,17 @@
             // 
             // buttonPlot
             // 
-            this.buttonPlot.Location = new System.Drawing.Point(118, 25);
+            this.buttonPlot.Location = new System.Drawing.Point(118, 51);
             this.buttonPlot.Name = "buttonPlot";
             this.buttonPlot.Size = new System.Drawing.Size(138, 35);
             this.buttonPlot.TabIndex = 3;
             this.buttonPlot.Text = "Построить график";
             this.buttonPlot.UseVisualStyleBackColor = true;
+            this.buttonPlot.Click += new System.EventHandler(this.buttonBuild_Click);
             // 
             // buttonErase
             // 
-            this.buttonErase.Location = new System.Drawing.Point(118, 66);
+            this.buttonErase.Location = new System.Drawing.Point(118, 92);
             this.buttonErase.Name = "buttonErase";
             this.buttonErase.Size = new System.Drawing.Size(138, 35);
             this.buttonErase.TabIndex = 3;
@@ -126,7 +129,7 @@
             // 
             // buttonColor
             // 
-            this.buttonColor.Location = new System.Drawing.Point(118, 107);
+            this.buttonColor.Location = new System.Drawing.Point(118, 133);
             this.buttonColor.Name = "buttonColor";
             this.buttonColor.Size = new System.Drawing.Size(138, 35);
             this.buttonColor.TabIndex = 3;
@@ -143,11 +146,29 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "График:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(118, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Шаг интерполяции:";
+            // 
+            // textBoxDelta
+            // 
+            this.textBoxDelta.Location = new System.Drawing.Point(118, 25);
+            this.textBoxDelta.Name = "textBoxDelta";
+            this.textBoxDelta.Size = new System.Drawing.Size(138, 20);
+            this.textBoxDelta.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 602);
+            this.Controls.Add(this.textBoxDelta);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonColor);
@@ -176,6 +197,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnX;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnY;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxDelta;
     }
 }
 

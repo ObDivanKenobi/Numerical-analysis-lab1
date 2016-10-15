@@ -20,8 +20,9 @@ namespace Lab1
         // x - узлы сетки, должны быть упорядочены по возрастанию, кратные узлы запрещены
         // y - значения функции в узлах сетки
         // n - количество узлов сетки
-        public void BuildSpline(double[] x, double[] y, int n)
+        public void BuildSpline(List<double> x, List<double> y)
         {
+            int n = Math.Max(x.Count, y.Count);
             // Инициализация массива сплайнов
             splines = new SplineTuple[n];
             for (int i = 0; i < n; ++i)
