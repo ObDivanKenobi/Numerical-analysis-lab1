@@ -18,7 +18,7 @@ namespace Lab1
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 form = new Form1();
             Application.Idle += form.OnIdle;
-            Application.Run(new Form1());
+            Application.Run(form);
         }
     }
 }
